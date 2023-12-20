@@ -2,13 +2,14 @@
 using Avalonia.Interactivity;
 using System;
 using System.Data.SQLite;
+using System.IO;
 
 namespace Diario.avalonia.Views;
 
 public partial class MainView : UserControl
 {
-
-    private static string cs = @"URI=file:" + Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\test.db";
+	private static string path=$"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}{App.PathSeparator}Diario";
+    private static string cs = @$"URI=file:{path}{App.PathSeparator}test.db";
     private static SQLiteConnection con;
     private static SQLiteCommand cmd;
     private static SQLiteDataReader rdr;
@@ -16,6 +17,8 @@ public partial class MainView : UserControl
     public MainView()
     {
         InitializeComponent();
+        if (!Directory.Exists(path))
+            Directory.CreateDirectory(path);
         con = new SQLiteConnection(cs);
         con.Open();
         cmd = new SQLiteCommand(con);
