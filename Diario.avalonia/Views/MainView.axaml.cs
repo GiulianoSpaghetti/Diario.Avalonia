@@ -1,31 +1,26 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Diario.Avalonia.ViewModels;
+using SQLite;
 using System;
-using System.Data.SQLite;
+using System.Collections.Generic;
+using SQLite;
+using System.IO;
 
 namespace Diario.avalonia.Views;
 
 public partial class MainView : UserControl
 {
-
-    private static string cs = @"URI=file:" + Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\test.db";
+    private static string cs = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "test.db");
     private static SQLiteConnection con;
-    private static SQLiteCommand cmd;
-    private static SQLiteDataReader rdr;
-    private static string stm, s;
+    private static string s;
+    private static int id;
+    private SQLite.TableQuery<Item> query;
     public MainView()
     {
         InitializeComponent();
         con = new SQLiteConnection(cs);
-        con.Open();
-        cmd = new SQLiteCommand(con);
-
-        cmd.CommandText = @"CREATE TABLE Diario(id INTEGER PRIMARY KEY, valore LONGTEXT UNIQUE, data DATE)";
-        try
-        {
-            cmd.ExecuteNonQuery();
-        }
-        catch (SQLiteException e) {; }
+        con.CreateTable<Item>();
         AggiornaEntita();
     }
 
@@ -34,26 +29,18 @@ public partial class MainView : UserControl
         Errore.Content = "";
         try
         {
-            stm = $"SELECT * FROM Diario WHERE id={GetIdFromEntita()}";
+            id = GetIdFromEntita();
         }
         catch (Exception ex)
         {
             Errore.Content = ex.Message;
             return;
         }
-        cmd = new SQLiteCommand(stm, con);
-        rdr = cmd.ExecuteReader();
-        try
+        query = con.Table<Item>().Where(v => v.Id.Equals(id));
+        foreach (Item item in query)
         {
-            rdr.Read();
+            sstring.Text = item.testo;
         }
-        catch (SQLiteException ex)
-        {
-            Errore.Content = ex.Message;
-            return;
-        }
-        sstring.Text = $"{rdr.GetString(1)}";
-        rdr.Close();
     }
 
     private void ModificaClicked(object sender, RoutedEventArgs e)
@@ -61,39 +48,30 @@ public partial class MainView : UserControl
         Errore.Content = "";
         try
         {
-            stm = $"UPDATE Diario SET valore='{sstring.Text}', data=DATE('now') WHERE id={GetIdFromEntita()}";
+            id = GetIdFromEntita();
         }
         catch (Exception ex)
         {
             Errore.Content = ex.Message;
             return;
         }
-
-        cmd = new SQLiteCommand(stm, con);
-        try
+        query = con.Table<Item>().Where(v => v.Id.Equals(id));
+        foreach (Item item in query)
         {
-            cmd.ExecuteNonQuery();
+            item.testo = sstring.Text;
+            item.data = DateTime.Now;
+            con.Update(item);
         }
-        catch (SQLiteException ex)
-        {
-            Errore.Content = ex.Message;
-            return;
-        }
+        AggiornaEntita();
 
     }
     private void InserisciClicked(object sender, RoutedEventArgs e)
     {
         Errore.Content = "";
-        cmd.CommandText = $"INSERT INTO Diario(valore, data) VALUES('{sstring.Text}', DATE('now'))";
-        try
-        {
-            cmd.ExecuteNonQuery();
-        }
-        catch (SQLiteException ex)
-        {
-            Errore.Content = ex.Message;
-            return;
-        }
+        Item item = new Item();
+        item.data = DateTime.Now;
+        item.testo = sstring.Text;
+        con.Insert(item);
         AggiornaEntita();
     }
     private void EliminaClicked(object sender, RoutedEventArgs e)
@@ -101,21 +79,17 @@ public partial class MainView : UserControl
         Errore.Content = "";
         try
         {
-            cmd.CommandText = $"DELETE FROM Diario WHERE id={GetIdFromEntita()}";
+            id = GetIdFromEntita();
         }
         catch (Exception ex)
         {
             Errore.Content = ex.Message;
             return;
         }
-        try
+        query = con.Table<Item>().Where(v => v.Id.Equals(id));
+        foreach (Item item in query)
         {
-            cmd.ExecuteNonQuery();
-        }
-        catch (SQLiteException ex)
-        {
-            Errore.Content = ex.Message;
-            return;
+            con.Delete(item);
         }
         AggiornaEntita();
     }
@@ -131,16 +105,13 @@ public partial class MainView : UserControl
     private void AggiornaEntita()
     {
         Dati.Items.Clear();
-        stm = "SELECT * FROM Diario";
-
-        cmd = new SQLiteCommand(stm, con);
-        rdr = cmd.ExecuteReader();
-
-        while (rdr.Read())
-            Dati.Items.Add($"{rdr.GetInt32(0)} - {rdr.GetDateTime(2).ToString("dd-MM-yyyy")}");
-        rdr.Close();
-        Dati.SelectedIndex = 0;
-
+        List<Item> elementi = con.Table<Item>().ToList();
+        if (elementi.Count > 0)
+        {
+            foreach (Item elemento in elementi)
+                Dati.Items.Add($"{elemento.Id} - {elemento.data}");
+            Dati.SelectedIndex = 0;
+        }
     }
 
 }
