@@ -21,23 +21,12 @@
 			<Label
                 x:Name="Errore"
                 Foreground="red" />
-			<Button
-                x:Name="Read"
-			Content="Leggi"
-			Click="LeggiClicked" />
-			<Button
-                x:Name="Modify"
-			Content="Modifica"
-		    Click="ModificaClicked"  />
-			<Button
-                x:Name="Insert"
-			Content="Inserisci"
-			Click="InserisciClicked"  />
-			<Button
-                x:Name="Delete"
-			Content="Elimina"
-			Click="EliminaClicked"  />
-		<Label
-			Content="ⓒ Giulio Sorrentino 2023 some right reserved" />
+			<Button Click="LeggiClicked">Leggi</Button>
+		    <Button Click="ModificaClicked">Modifica</Button> 
+			<Button Click="InserisciClicked">Inserisci</Button>
+			<Button Click="EliminaClicked">Elimina</Button>
+			<DatePicker x:Name="filtraPerData" />
+		    <Button Click="CercaDalClicked">Cerca tutti i messaggi da</Button>
+			<Label>ⓒ Giulio Sorrentino 2023 some right reserved</Label>
 		</StackPanel>
 </UserControl>

@@ -21,6 +21,7 @@ public partial class MainView : UserControl
         InitializeComponent();
         con = new SQLiteConnection(cs);
         con.CreateTable<Item>();
+        filtraPerData.SelectedDate=DateTime.Now;
         AggiornaEntita();
     }
 
@@ -93,6 +94,10 @@ public partial class MainView : UserControl
         }
         AggiornaEntita();
     }
+    private void CercaDalClicked(object sender, RoutedEventArgs e) {
+        AggiornaEntita(new DateTime(filtraPerData.SelectedDate.Value.Year, filtraPerData.SelectedDate.Value.Month, filtraPerData.SelectedDate.Value.Day));
+    }
+
     private int GetIdFromEntita()
     {
         if (Dati.Items.Count == 0)
@@ -102,10 +107,19 @@ public partial class MainView : UserControl
 
     }
 
-    private void AggiornaEntita()
+    private void AggiornaEntita(DateTime? data=null)
     {
         Dati.Items.Clear();
-        List<Item> elementi = con.Table<Item>().ToList();
+        List<Item> elementi;
+        if (data == null)
+            elementi = con.Table<Item>().ToList();
+        else
+        {
+            query = con.Table<Item>().Where(v => v.data >= data);
+            elementi = new List<Item>();
+            foreach (Item item in query)
+                elementi.Add(item);
+        }
         if (elementi.Count > 0)
         {
             foreach (Item elemento in elementi)
