@@ -9,9 +9,6 @@ namespace Diario.avalonia;
 
 public partial class App : Application
 {
-	
-	public static string PathSeparator="/";
-	
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
