@@ -28,7 +28,7 @@ namespace Diario_Setup
             );
 
             project.GUID = new Guid("47F5EFC4-E7EF-4484-87AE-0CB4BA3BFD30");
-            project.Version = new Version("0.3");
+            project.Version = new Version("0.3.1");
             project.Platform = Platform.x64;
             project.SourceBaseDir = "E:\\source\\Diario.Avalonia\\Diario.avalonia.Desktop\\bin\\Release\\net8.0-windows10.0.22621.0";
             project.LicenceFile = "LICENSE.rtf";

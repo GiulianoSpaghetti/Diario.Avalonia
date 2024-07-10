@@ -15,12 +15,8 @@
 	<StackPanel>
 
 			<ComboBox x:Name="Dati" />
-			<TextBox
-                x:Name="sstring"
-                Text="" />
-			<Label
-                x:Name="Errore"
-                Foreground="red" />
+			<TextBox x:Name="sstring" Text="" TextWrapping="Wrap" AcceptsReturn="True"/>
+			<Label x:Name="Errore" Foreground="red" />
 			<Button Click="LeggiClicked">Leggi</Button>
 		    <Button Click="ModificaClicked">Modifica</Button> 
 			<Button Click="InserisciClicked">Inserisci</Button>
