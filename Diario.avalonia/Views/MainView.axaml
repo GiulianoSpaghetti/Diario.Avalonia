@@ -27,6 +27,6 @@
 			<Button Click="EliminaClicked">Elimina</Button>
 			<DatePicker x:Name="filtraPerData" />
 		    <Button Click="CercaDalClicked">Cerca tutti i messaggi da</Button>
-			<Label>ⓒ Giulio Sorrentino 2023 some right reserved</Label>
+			<Label>ⓒ Giulio Sorrentino 2023-2024 some right reserved</Label>
 		</StackPanel>
 </UserControl>
