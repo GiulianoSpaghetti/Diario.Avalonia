@@ -8,5 +8,63 @@
         x:Class="Diario.avalonia.Views.MainWindow"
         Icon="/Assets/icon.ico"
         Title="Diario.avalonia">
+	<Window.Resources>
+		<ResourceDictionary x:Key="it">
+			<x:String x:Key="Home">Home</x:String>
+			<x:String x:Key="Informazioni">Informazioni</x:String>
+			<x:String x:Key="Leggi">Leggi il topic</x:String>
+			<x:String x:Key="Inserisci">Inserisci il topic</x:String>
+			<x:String x:Key="Modifica">Modifica il topic</x:String>
+			<x:String x:Key="Elimina">Eliminare il topic</x:String>
+			<x:String x:Key="Ricerca">Ricerca tutti i topic fatti dopo la data</x:String>
+			<x:String x:Key="RicercaEffettuata">Ricerca effettuata.</x:String>
+			<x:String x:Key="CiSono"> Ci sono</x:String>
+			<x:String x:Key="elementi">topics</x:String>
+			<x:String x:Key="DatabaseVuoto">La base di dati è vuota</x:String>
+			<x:String x:Key="ImpossibileTrovareElementi">La ricerca non ha elementi</x:String>
+			<x:String x:Key="Errore">Errore</x:String>
+		</ResourceDictionary>
+		<ResourceDictionary x:Key="en">
+			<x:String x:Key="Leggi">Read topic</x:String>
+			<x:String x:Key="Inserisci">Insert topic</x:String>
+			<x:String x:Key="Modifica">Modify Topic</x:String>
+			<x:String x:Key="Elimina">Delete Topic</x:String>
+			<x:String x:Key="Ricerca">Find all topics inserted after the date</x:String>
+			<x:String x:Key="RicercaEffettuata">The search has been made.</x:String>
+			<x:String x:Key="CiSono"> There are</x:String>
+			<x:String x:Key="elementi">topics</x:String>
+			<x:String x:Key="DatabaseVuoto">Database is empty</x:String>
+			<x:String x:Key="ImpossibileTrovareElementi">The search has no topics</x:String>
+			<x:String x:Key="Errore">Error</x:String>
+		</ResourceDictionary>
+		<ResourceDictionary x:Key="es">
+			<x:String x:Key="Leggi">Leer tema</x:String>
+			<x:String x:Key="Inserisci">Insertar tema</x:String>
+			<x:String x:Key="Modifica">Modificar tema</x:String>
+			<x:String x:Key="Elimina">Eliminar tema</x:String>
+			<x:String x:Key="Ricerca">Buscar todos los temas insertados después de la fecha</x:String>
+			<x:String x:Key="RicercaEffettuata">La búsqueda se ha realizado.</x:String>
+			<x:String x:Key="CiSono">Hay</x:String>
+			<x:String x:Key="elementi">temas</x:String>
+			<x:String x:Key="DatabaseVuoto">La base de datos está vacía</x:String>
+			<x:String x:Key="ImpossibileTrovareElementi">La búsqueda no tiene temas</x:String>
+			<x:String x:Key="Errore">Error</x:String>
+		</ResourceDictionary>
+		<ResourceDictionary x:Key="fr">
+			<x:String x:Key="Leggi">Lire le sujet</x:String>
+			<x:String x:Key="Inserisci">Insérer un sujes</x:String>
+			<x:String x:Key="Modifica">Modifier le sujet</x:String>
+			<x:String x:Key="Elimina">Supprimer le sujet</x:String>
+			<x:String x:Key="Ricerca">Rechercher toutes les rubriques insérées après la date</x:String>
+			<x:String x:Key="RicercaEffettuata">La recherche a été faite.</x:String>
+			<x:String x:Key="CiSono"> Il y a</x:String>
+			<x:String x:Key="elementi">Sujets</x:String>
+			<x:String x:Key="DatabaseVuoto">La base de données est vide</x:String>
+			<x:String x:Key="ImpossibileTrovareElementi">La recherche n’a pas de sujets</x:String>
+			<x:String x:Key="Errore">Erreur</x:String>
+		</ResourceDictionary>
+	</Window.Resources>
+	<Window.Content>
         <views:MainView />
+	</Window.Content>
 </Window>

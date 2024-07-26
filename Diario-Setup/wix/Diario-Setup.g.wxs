@@ -6,7 +6,7 @@
     To suppress generation of this file remove `set ide=true` from the PostBuildEvent of the VS project
 </auto-generated>
 -->
-  <Package Compressed="yes" ProductCode="47f5efc4-e7ef-4484-87ae-0cb4ba6b1d30" Name="Diario" Language="1033" Version="0.3.1" UpgradeCode="47f5efc4-e7ef-4484-87ae-0cb4ba3bfd30" Manufacturer="Giulio Sorrentino" InstallerVersion="200">
+  <Package Compressed="yes" ProductCode="47f5efc4-e7ef-4484-87ae-0cb4ba9bfd30" Name="Diario" Language="1033" Version="0.5" UpgradeCode="47f5efc4-e7ef-4484-87ae-0cb4ba3bfd30" Manufacturer="Giulio Sorrentino" InstallerVersion="200">
     <SummaryInformation Codepage="Windows-1252" Description="Un diario privato in avalonia e linq" />
     <Media Id="1" Cabinet="Diario_.cab" EmbedCab="yes" />
 
@@ -97,6 +97,22 @@
           <File Id="Avalonia.X11.dll_2955429394" Source="Avalonia.X11.dll" />
         </Component>
 
+        <Component Id="Component.DesktopNotifications.Apple.dll_1434747201" Guid="47f5efc4-e7ef-4484-87ae-0cb42a2aefcf" Bitness="always64">
+          <File Id="DesktopNotifications.Apple.dll_1434747201" Source="DesktopNotifications.Apple.dll" />
+        </Component>
+
+        <Component Id="Component.DesktopNotifications.dll_693726746" Guid="47f5efc4-e7ef-4484-87ae-0cb4380cf178" Bitness="always64">
+          <File Id="DesktopNotifications.dll_693726746" Source="DesktopNotifications.dll" />
+        </Component>
+
+        <Component Id="Component.DesktopNotifications.FreeDesktop.dll_3790540904" Guid="47f5efc4-e7ef-4484-87ae-0cb403978c6c" Bitness="always64">
+          <File Id="DesktopNotifications.FreeDesktop.dll_3790540904" Source="DesktopNotifications.FreeDesktop.dll" />
+        </Component>
+
+        <Component Id="Component.DesktopNotifications.Windows.dll_4231139637" Guid="47f5efc4-e7ef-4484-87ae-0cb4ba649219" Bitness="always64">
+          <File Id="DesktopNotifications.Windows.dll_4231139637" Source="DesktopNotifications.Windows.dll" />
+        </Component>
+
         <Component Id="Component.Diario.avalonia.Desktop.deps.json_3402308695" Guid="47f5efc4-e7ef-4484-87ae-0cb45cbcc79b" Bitness="always64">
           <File Id="Diario.avalonia.Desktop.deps.json_3402308695" Source="Diario.avalonia.Desktop.deps.json" />
         </Component>
@@ -141,6 +157,10 @@
           <File Id="MicroCom.Runtime.dll_2237256464" Source="MicroCom.Runtime.dll" />
         </Component>
 
+        <Component Id="Component.Microsoft.Toolkit.Uwp.Notifications.dll_2380687649" Guid="47f5efc4-e7ef-4484-87ae-0cb462a54529" Bitness="always64">
+          <File Id="Microsoft.Toolkit.Uwp.Notifications.dll_2380687649" Source="Microsoft.Toolkit.Uwp.Notifications.dll" />
+        </Component>
+
         <Component Id="Component.Microsoft.Windows.SDK.NET.dll_1126017086" Guid="47f5efc4-e7ef-4484-87ae-0cb45e7020e5" Bitness="always64">
           <File Id="Microsoft.Windows.SDK.NET.dll_1126017086" Source="Microsoft.Windows.SDK.NET.dll" />
         </Component>
@@ -179,6 +199,10 @@
 
         <Component Id="Component.System.Reactive.dll_312747158" Guid="47f5efc4-e7ef-4484-87ae-0cb404d3baf0" Bitness="always64">
           <File Id="System.Reactive.dll_312747158" Source="System.Reactive.dll" />
+        </Component>
+
+        <Component Id="Component.Tmds.DBus.dll_235602763" Guid="47f5efc4-e7ef-4484-87ae-0cb4b618e736" Bitness="always64">
+          <File Id="Tmds.DBus.dll_235602763" Source="Tmds.DBus.dll" />
         </Component>
 
         <Component Id="Component.Tmds.DBus.Protocol.dll_194633597" Guid="47f5efc4-e7ef-4484-87ae-0cb41cd77c2c" Bitness="always64">
@@ -258,6 +282,10 @@
       <ComponentRef Id="Component.Avalonia.Vulkan.dll_974469763" />
       <ComponentRef Id="Component.Avalonia.Win32.dll_4229150398" />
       <ComponentRef Id="Component.Avalonia.X11.dll_2955429394" />
+      <ComponentRef Id="Component.DesktopNotifications.Apple.dll_1434747201" />
+      <ComponentRef Id="Component.DesktopNotifications.dll_693726746" />
+      <ComponentRef Id="Component.DesktopNotifications.FreeDesktop.dll_3790540904" />
+      <ComponentRef Id="Component.DesktopNotifications.Windows.dll_4231139637" />
       <ComponentRef Id="Component.Diario.avalonia.Desktop.deps.json_3402308695" />
       <ComponentRef Id="Component.Diario.avalonia.Desktop.dll_1518032160" />
       <ComponentRef Id="Component.Diario.avalonia.Desktop.exe_423545282" />
@@ -269,6 +297,7 @@
       <ComponentRef Id="Component.HarfBuzzSharp.dll_3065417831" />
       <ComponentRef Id="Component.LICENSE.rtf_1349493675" />
       <ComponentRef Id="Component.MicroCom.Runtime.dll_2237256464" />
+      <ComponentRef Id="Component.Microsoft.Toolkit.Uwp.Notifications.dll_2380687649" />
       <ComponentRef Id="Component.Microsoft.Windows.SDK.NET.dll_1126017086" />
       <ComponentRef Id="Component.ReactiveUI.dll_415552779" />
       <ComponentRef Id="Component.SkiaSharp.dll_1012958936" />
@@ -279,6 +308,7 @@
       <ComponentRef Id="Component.SQLitePCLRaw.provider.e_sqlite3.dll_2718481408" />
       <ComponentRef Id="Component.System.IO.Pipelines.dll_4156298344" />
       <ComponentRef Id="Component.System.Reactive.dll_312747158" />
+      <ComponentRef Id="Component.Tmds.DBus.dll_235602763" />
       <ComponentRef Id="Component.Tmds.DBus.Protocol.dll_194633597" />
       <ComponentRef Id="Component.WinRT.Runtime.dll_3491948227" />
       <ComponentRef Id="Component.av_libglesv2.dll_1352510609" />

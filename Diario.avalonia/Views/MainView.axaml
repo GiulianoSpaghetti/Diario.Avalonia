@@ -16,13 +16,13 @@
 
 			<ComboBox x:Name="Dati" />
 			<TextBox x:Name="sstring" Text="" TextWrapping="Wrap" AcceptsReturn="True"/>
-			<Label x:Name="Errore" Foreground="red" />
-			<Button Click="LeggiClicked">Leggi</Button>
-		    <Button Click="ModificaClicked">Modifica</Button> 
-			<Button Click="InserisciClicked">Inserisci</Button>
-			<Button Click="EliminaClicked">Elimina</Button>
+			<Button x:Name="Leggi" Click="LeggiClicked" />
+		    <Button x:Name="Modifica" Click="ModificaClicked" /> 
+			<Button x:Name="Inserisci" Click="InserisciClicked" />
+			<Button x:Name="Elimina" Click="EliminaClicked" />
 			<DatePicker x:Name="filtraPerData" />
-		    <Button Click="CercaDalClicked">Cerca tutti i messaggi da</Button>
+		    <Button x:Name="Cerca" Click="CercaDalClicked" />
 			<Label>ⓒ Giulio Sorrentino 2023-2024 some right reserved</Label>
+			<Label>This software is under GPLv3 or, at your opinion, any later version</Label>
 		</StackPanel>
 </UserControl>

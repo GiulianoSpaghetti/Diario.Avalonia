@@ -16,6 +16,7 @@ public partial class MainView : UserControl
     private static string s;
     private static int id;
     private SQLite.TableQuery<Item> query;
+    public static MainView Instance = null;
     public MainView()
     {
         InitializeComponent();
@@ -23,18 +24,27 @@ public partial class MainView : UserControl
         con.CreateTable<Item>();
         filtraPerData.SelectedDate=DateTime.Now;
         AggiornaEntita();
+        Instance = this;
+    }
+
+    public static void Traduci ()
+    {
+        Instance.Leggi.Content = MainWindow.d["Leggi"] as string;
+        Instance.Modifica.Content = MainWindow.d["Modifica"] as string;
+        Instance.Elimina.Content = MainWindow.d["Elimina"] as string;
+        Instance.Inserisci.Content = MainWindow.d["Inserisci"] as string;
+        Instance.Cerca.Content = MainWindow.d["Ricerca"] as string;
     }
 
     private void LeggiClicked(object sender, RoutedEventArgs e)
     {
-        Errore.Content = "";
         try
         {
             id = GetIdFromEntita();
         }
         catch (Exception ex)
         {
-            Errore.Content = ex.Message;
+            MainWindow.MakeNotification(MainWindow.d["Errore"] as string, ex.Message);
             return;
         }
         query = con.Table<Item>().Where(v => v.Id.Equals(id));
@@ -46,14 +56,13 @@ public partial class MainView : UserControl
 
     private void ModificaClicked(object sender, RoutedEventArgs e)
     {
-        Errore.Content = "";
         try
         {
             id = GetIdFromEntita();
         }
         catch (Exception ex)
         {
-            Errore.Content = ex.Message;
+            MainWindow.MakeNotification(MainWindow.d["Errore"] as string, ex.Message);
             return;
         }
         query = con.Table<Item>().Where(v => v.Id.Equals(id));
@@ -68,7 +77,6 @@ public partial class MainView : UserControl
     }
     private void InserisciClicked(object sender, RoutedEventArgs e)
     {
-        Errore.Content = "";
         Item item = new Item();
         item.data = DateTime.Now;
         item.testo = sstring.Text;
@@ -77,14 +85,13 @@ public partial class MainView : UserControl
     }
     private void EliminaClicked(object sender, RoutedEventArgs e)
     {
-        Errore.Content = "";
         try
         {
             id = GetIdFromEntita();
         }
         catch (Exception ex)
         {
-            Errore.Content = ex.Message;
+            MainWindow.MakeNotification(MainWindow.d["Errore"] as string, ex.Message);
             return;
         }
         query = con.Table<Item>().Where(v => v.Id.Equals(id));
@@ -101,7 +108,7 @@ public partial class MainView : UserControl
     private int GetIdFromEntita()
     {
         if (Dati.Items.Count == 0)
-            throw new Exception("Database vuoto");
+            throw new Exception(MainWindow.d["DatabaseVuoto"] as string);
         s = Dati.SelectedItem.ToString();
         return Int32.Parse(s.Substring(0, s.IndexOf("-") - 1));
 
@@ -126,6 +133,13 @@ public partial class MainView : UserControl
                 Dati.Items.Add($"{elemento.Id} - {elemento.data}");
             Dati.SelectedIndex = 0;
         }
+        if (data != null)
+            if (elementi.Count == 0)
+                MainWindow.MakeNotification(MainWindow.d["ImpossibileTrovareElementi"] as string, MainWindow.d["ImpossibileTrovareElementi"] as string);
+            else
+                MainWindow.MakeNotification(MainWindow.d["RicercaEffettuata"] as string, $"{MainWindow.d["RicercaEffettuata"]} {MainWindow.d["CiSono"]} {elementi.Count} {MainWindow.d["elementi"]}.");
+        Dati.IsEnabled = elementi.Count > 0;
+        sstring.Text = "";
     }
 
 }
