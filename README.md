@@ -15,6 +15,12 @@
  
  La differenza tra un database relazionale ed un database ad oggetti è che mysql consente di stabilire relazioni tra le entità (con  l'id), mentre un database ad oggetti conserva solo l'oggetto.
 
+## Video dell'app
+
+https://1drv.ms/u/s!ApmOB0x2yBN0k5Nu62wJx20dmeM3XQ?e=Bqt1n0
+
+https://1drv.ms/u/s!ApmOB0x2yBN0k5NvwpRu2ErQJWAdCQ?e=hViWfH
+
  ## Screenshots 
  
  ![Schermata del 2024-07-10 19-16-23](https://github.com/GiulianoSpaghetti/Diario.Avalonia/assets/49764967/4005c066-e84f-4766-8296-6c14ece2a4ff)
